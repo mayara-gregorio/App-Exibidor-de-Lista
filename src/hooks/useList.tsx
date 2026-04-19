@@ -19,6 +19,11 @@ export function useList(){
     client.onmessage = (event) => {
       const data = JSON.parse(event.data)
       setList(data)
+      client.close()
+    }
+
+    client.onclose = () => {
+      console.log("Desconectado do Servidor!")
     }
   }, [])
 
